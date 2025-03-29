@@ -1,0 +1,135 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Cold War II Interactive Grid - QLabGridX1</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f8fb;
+      padding: 2rem;
+      color: #002244;
+    }
+    h1 {
+      text-align: center;
+      color: #001a33;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+    .node {
+      background: white;
+      border-left: 6px solid #003366;
+      padding: 1rem;
+      border-radius: 10px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+    .node:hover {
+      transform: scale(1.02);
+      border-color: #0077cc;
+    }
+    .node h2 {
+      margin: 0 0 0.5rem 0;
+      font-size: 1.1rem;
+    }
+    .node p {
+      margin: 0.2rem 0;
+      font-size: 0.9rem;
+    }
+    .impact {
+      font-weight: bold;
+      color: #990000;
+    }
+    .popup {
+      display: none;
+      position: fixed;
+      top: 20%;
+      left: 50%;
+      transform: translateX(-50%);
+      background: white;
+      border: 2px solid #003366;
+      padding: 1rem;
+      width: 400px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      border-radius: 10px;
+      z-index: 10;
+    }
+    .popup h3 {
+      margin-top: 0;
+      color: #003366;
+    }
+    .popup p {
+      font-size: 0.9rem;
+    }
+    .popup button {
+      margin-top: 1rem;
+      padding: 0.4rem 0.8rem;
+      background-color: #003366;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <h1>Cold War II Interactive Simulation Grid</h1>
+  <div class="grid">
+    <div class="node" onclick="showPopup('russia')">
+      <h2>🇷🇺 Russian Arctic Expansion</h2>
+      <p>Trigger: Nuclear subfleet near Greenland</p>
+      <p class="impact">Click to simulate consequences</p>
+    </div>
+    <div class="node" onclick="showPopup('greenland')">
+      <h2>🇺🇸 US Greenland Doctrine</h2>
+      <p>Trigger: Arctic base push resumes</p>
+      <p class="impact">Click to simulate consequences</p>
+    </div>
+    <div class="node" onclick="showPopup('ai')">
+      <h2>🛰 AI Satellite Misfire</h2>
+      <p>Trigger: False threat from satellite scan</p>
+      <p class="impact">Click to simulate escalation path</p>
+    </div>
+  </div>
+
+  <div class="popup" id="popup">
+    <h3 id="popup-title"></h3>
+    <p id="popup-body"></p>
+    <button onclick="closePopup()">Close</button>
+  </div>
+
+  <script>
+    const data = {
+      russia: {
+        title: "Escalation Path: Russian Arctic Expansion",
+        body: "NATO deploys forward units in Iceland. Russian retaliation includes radar jamming in the Barents. EU fractures emerge over intervention stance. Cold War II risk: HIGH."
+      },
+      greenland: {
+        title: "Impact Path: US Greenland Doctrine",
+        body: "EU-Nordic rift widens. Denmark distances from Brussels. Russia offers Arctic cooperation to Norway as wedge. BRICS support anti-NATO info ops. Cold War II risk: MODERATE–HIGH."
+      },
+      ai: {
+        title: "Chain Reaction: AI Satellite Misfire",
+        body: "AI flags Arctic sub as hostile. Autonomous defense goes yellow alert. Manual override delayed. Diplomatic channels jammed by cyber noise. Cold War II risk: EXTREME (automation fault line)."
+      }
+    };
+
+    function showPopup(key) {
+      document.getElementById("popup-title").innerText = data[key].title;
+      document.getElementById("popup-body").innerText = data[key].body;
+      document.getElementById("popup").style.display = "block";
+    }
+
+    function closePopup() {
+      document.getElementById("popup").style.display = "none";
+    }
+  </script>
+</body>
+</html>
