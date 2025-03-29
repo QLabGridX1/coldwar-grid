@@ -1,0 +1,73 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Cold War II Interactive Grid v2 - QLabGridX1</title>
+  <style>
+    body { font-family: Arial, sans-serif; background: #f4f8fb; padding: 2rem; color: #002244; }
+    h1 { text-align: center; color: #001a33; }
+    .grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; margin-top: 2rem; }
+    .node { background: white; border-left: 6px solid #003366; padding: 1rem; border-radius: 10px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.1); cursor: pointer; transition: transform 0.2s; }
+    .node:hover { transform: scale(1.02); border-color: #0077cc; }
+    .node h2 { margin: 0 0 0.5rem 0; font-size: 1.1rem; }
+    .node p { margin: 0.2rem 0; font-size: 0.9rem; }
+    .impact { font-weight: bold; color: #990000; }
+    .popup { display: none; position: fixed; top: 20%; left: 50%; transform: translateX(-50%);
+             background: white; border: 2px solid #003366; padding: 1rem; width: 400px;
+             box-shadow: 0 4px 8px rgba(0,0,0,0.2); border-radius: 10px; z-index: 10; }
+    .popup h3 { margin-top: 0; color: #003366; }
+    .popup p { font-size: 0.9rem; }
+    .popup button { margin-top: 1rem; padding: 0.4rem 0.8rem; background-color: #003366;
+                    color: white; border: none; border-radius: 5px; cursor: pointer; }
+  </style>
+</head>
+<body>
+  <h1>Cold War II Strategic Simulation Grid v2</h1>
+  <div class="grid">
+    <div class="node" onclick="showPopup('russia')"><h2>🇷🇺 Russian Arctic Expansion</h2><p>Subfleet near Greenland</p><p class="impact">Click for impact</p></div>
+    <div class="node" onclick="showPopup('greenland')"><h2>🇺🇸 US Greenland Doctrine</h2><p>Resumed Arctic base agenda</p><p class="impact">Click for impact</p></div>
+    <div class="node" onclick="showPopup('ai')"><h2>🛰 AI Satellite Misfire</h2><p>Autonomous misread triggers alert</p><p class="impact">Click for impact</p></div>
+    <div class="node" onclick="showPopup('brics')"><h2>🌐 BRICS Arctic Buildup</h2><p>China-Russia corridor emerges</p><p class="impact">Click for impact</p></div>
+    <div class="node" onclick="showPopup('eu')"><h2>🇪🇺 EU Arctic Sovereignty Delay</h2><p>Policy inertia persists</p><p class="impact">Click for impact</p></div>
+    <div class="node" onclick="showPopup('quantum')"><h2>🇨🇳 Chinese Quantum Outpost</h2><p>Dual-use polar tech post</p><p class="impact">Click for impact</p></div>
+    <div class="node" onclick="showPopup('treaty')"><h2>🧊 Arctic Treaty Collapse</h2><p>Russia exits Arctic Council</p><p class="impact">Click for impact</p></div>
+    <div class="node" onclick="showPopup('energy')"><h2>🛢 Energy Shock: Russia-Greenland</h2><p>Oil deal threatens EU law</p><p class="impact">Click for impact</p></div>
+    <div class="node" onclick="showPopup('cyber')"><h2>💻 Cyber Jam in Nordic Grid</h2><p>Attack disrupts infrastructure</p><p class="impact">Click for impact</p></div>
+    <div class="node" onclick="showPopup('info')"><h2>🔥 Disinformation Surge (South)</h2><p>Arctic used to spark global wedge</p><p class="impact">Click for impact</p></div>
+  </div>
+
+  <div class="popup" id="popup">
+    <h3 id="popup-title"></h3>
+    <p id="popup-body"></p>
+    <button onclick="closePopup()">Close</button>
+  </div>
+
+  <script>
+    const data = {
+      russia: { title: "Escalation: Russian Arctic Expansion", body: "NATO deploys forces in Iceland. Russia retaliates via jamming in Barents. EU unity erodes. Cold War II Risk: HIGH." },
+      greenland: { title: "Impact: US Greenland Doctrine", body: "Nordic rift grows. Denmark leans autonomous. Russia courts Norway. Cold War II Risk: MODERATE-HIGH." },
+      ai: { title: "Risk: AI Misfire", body: "Autonomous sub alert. Human override delayed. Diplomatic silence. Cold War II Risk: EXTREME." },
+      brics: { title: "Impact: BRICS Arctic Chain", body: "Africa, Asia redirect Arctic trade via BRICS corridor. EU bypassed. Cold War II Risk: STRATEGIC." },
+      eu: { title: "Vulnerability: EU Delay", body: "Policy stalling. Russia–US fill Arctic vacuum. Cold War II Risk: SYSTEMIC." },
+      quantum: { title: "Trigger: Quantum Polar Post", body: "China activates quantum relay hub. NATO intel compromised. Cold War II Risk: EMERGENT." },
+      treaty: { title: "Collapse: Arctic Treaty", body: "Russia exits Arctic Council. Legal vacuum opens. Cold War II Risk: DIPLOMATIC BREAK." },
+      energy: { title: "Shock: Russia–Greenland Energy Pact", body: "Pipeline route bypasses EU. Sanctions splinter. Cold War II Risk: ECONOMIC." },
+      cyber: { title: "Attack: Nordic Grid Compromised", body: "Power outages, attribution unclear. Cyber redlines blurred. Cold War II Risk: HYBRID CONFLICT." },
+      info: { title: "Maneuver: Info War in the South", body: "Arctic tensions spark global wedge narratives. EU-African trust shaken. Cold War II Risk: GLOBAL DIVIDE." }
+    };
+
+    function showPopup(key) {
+      document.getElementById("popup-title").innerText = data[key].title;
+      document.getElementById("popup-body").innerText = data[key].body;
+      document.getElementById("popup").style.display = "block";
+    }
+
+    function closePopup() {
+      document.getElementById("popup").style.display = "none";
+    }
+  </script>
+</body>
+</html>
